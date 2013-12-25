@@ -1,4 +1,4 @@
-# Ruby on Rails Tutorial: sample application
+# Ruby on Rails Tutorial: System Blog / Framgia
 
 This is the sample application for
 the [*Ruby on Rails Tutorial*](http://railstutorial.org/)
