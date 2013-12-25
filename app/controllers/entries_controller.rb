@@ -15,6 +15,12 @@ class EntriesController < ApplicationController
 	    end
 	end
 
+	def show
+		@entry = Entry.find(params[:id])
+		@user = current_user
+		@comments = @entry.comments
+	end
+
 	private
 
 	    def entry_params

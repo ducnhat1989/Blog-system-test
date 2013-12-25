@@ -1,7 +1,8 @@
 BlogsystemTest::Application.routes.draw do
   resources :users
   resources :sessions,      only: [:new, :create, :destroy]
-  resources :entries,       only: [:new, :create, :destroy]
+  resources :entries
+  resources :comments
 
   root  'static_pages#home'
 
