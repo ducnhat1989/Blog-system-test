@@ -3,16 +3,16 @@
 <p>
   <%= @entry.body %>
 </p>
-<span>Posted <%= time_ago_in_words(@entry.created_at) %> ago.</span>
+<p>Posted by <%= link_to @user_post_entry.name, @user_post_entry %> 
+	<%= time_ago_in_words(@entry.created_at) %> ago.
+</p>
 
 <!--list comment-->
-<div class="span8">
-	<% if @comments.any? %>
-	  <ul class="microposts">
+<% if @comments.any? %>
+	<div class="span12">
 	    <%= render @comments %>
-	  </ul>
-	<% end %>
-</div>
+	</div>
+<% end %>
 <!--comment form-->
 <% if signed_in? %>
 	<%= render 'comments/comment_form' %>

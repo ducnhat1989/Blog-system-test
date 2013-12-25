@@ -1,0 +1,16 @@
+<% if !current_user?(feed_item.user) %>
+<li id="<%= feed_item.id %>">
+  <%= link_to gravatar_for(feed_item.user), feed_item.user %>
+  <span class="user">
+    <%= link_to feed_item.user.name, feed_item.user %>
+  </span>
+  <span class="content">
+    <h6><%= link_to feed_item.title, feed_item %></h6>
+    <%= feed_item.body %>
+  </span>
+
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
+  </span>
+</li>
+<% end %>

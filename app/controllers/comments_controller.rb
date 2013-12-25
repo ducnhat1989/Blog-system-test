@@ -5,12 +5,17 @@ class CommentsController < ApplicationController
 	end
 
 	def create
-		#@entry= current_user.entries.build(entry_params)
 		entry_current = Entry.find(params[:comment][:entry_id])
 		@comment = entry_current.comments.build(comment_params)
 	    if @comment.save
 	      flash[:success] = "Comment posted!"
 	      redirect_to entry_current
+		else
+		  flash.now[:success] = "Posted Failed!"
+		  @entry = Entry.find(params[:comment][:entry_id])
+		  @user_post_entry = User.find(@entry.user_id)
+		  @comments = @entry.comments
+		  render 'entries/show'
 		end
 	end
 

@@ -1,6 +1,12 @@
-<p>
-	<%= gravatar_for comment.user, size: 25 %>
-  	<%= link_to comment.user.name, comment.user %>
-	<%= comment.content %>
-	<%= time_ago_in_words(comment.created_at) %> ago 
-</p>
+<aside class="span10">
+  <p>
+    <%= link_to gravatar_for(comment.user, size: 25) , comment.user%>
+	<h6>
+	  <%= link_to comment.user.name, comment.user %>
+	</h6>
+  </p>
+  <p style="border-bottom:1px solid #cecece; padding-bottom:5px">
+  	<%= wrap comment.content %>
+	<span style="font-size:10px; color:#bcbcbc"><%= time_ago_in_words(comment.created_at) %> ago</span>
+  </p>
+</aside>

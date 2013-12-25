@@ -1,10 +1,14 @@
-<%= form_for(@entry.comments.build(entry_id: @entry.id, user_id: @user.id)) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <%= f.hidden_field :entry_id %>
-  <%= f.hidden_field :user_id %>
+<div class="span12">
+	<aside class="span10">
+		<%= form_for(@entry.comments.build(entry_id: @entry.id, user_id: @current_user.id)) do |f| %>
+		  <%= render 'shared/error_messages', object: f.object %>
+		  <%= f.hidden_field :entry_id %>
+		  <%= f.hidden_field :user_id %>
 
-  <div class="field">
-    <%= f.text_area :content, placeholder: "Compose new comment..." %>
-  </div>
-  <%= f.submit "Comment", class: "btn btn-small btn-primary" %>
-<% end %>
+		  <div class="field">
+		    <%= f.text_area :content, placeholder: "Compose new comment..." %>
+		  </div>
+		  <%= f.submit "Comment", class: "btn btn-small btn-primary" %>
+		<% end %>
+	</aside>
+</div>

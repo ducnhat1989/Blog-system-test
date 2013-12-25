@@ -1,8 +1,13 @@
 BlogsystemTest::Application.routes.draw do
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers      #/users/1/following and /users/1/followers
+    end
+  end
   resources :sessions,      only: [:new, :create, :destroy]
   resources :entries
   resources :comments
+  resources :relationships, only: [:create, :destroy]
 
   root  'static_pages#home'
 

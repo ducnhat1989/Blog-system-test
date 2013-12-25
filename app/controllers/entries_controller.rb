@@ -1,4 +1,5 @@
 class EntriesController < ApplicationController
+	before_action :signed_in_user, only: [:create, :destroy]
 
 	def new
 		@entry = Entry.new
@@ -8,17 +9,22 @@ class EntriesController < ApplicationController
 		@entry= current_user.entries.build(entry_params)
 	    if @entry.save
 	      flash[:success] = "Entry posted!"
-	      redirect_to root_url
+	      redirect_to @entry
 	    else
-	      #@feed_items = []
-	      render 'static_pages/home'
+	      render 'new'
 	    end
 	end
 
 	def show
 		@entry = Entry.find(params[:id])
-		@user = current_user
+		@user_post_entry = User.find(@entry.user_id)
+		#@user = current_user
 		@comments = @entry.comments
+	end
+
+	def destroy
+		@entry.destroy
+    	redirect_to root_url
 	end
 
 	private
