@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
 	before_action :signed_in_user, only: [:create, :destroy]
+	before_action :correct_user,   only: :destroy
 
 	def new
 		@entry = Entry.new
@@ -34,6 +35,7 @@ class EntriesController < ApplicationController
 	    end
 
 	    def correct_user
-	      
+	      @entry = current_user.entries.find_by(id: params[:id])
+	      redirect_to root_url if @entry.nil?
 	    end
 end

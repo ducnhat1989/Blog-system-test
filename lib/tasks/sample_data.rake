@@ -10,9 +10,9 @@ end
 
 def make_users
   admin = User.create!(name:     "Framgia",
-                       email:    "example@framgia.com",
-                       password: "12345",
-                       password_confirmation: "12345")
+                       email:    "admin@framgia.com",
+                       password: "123456",
+                       password_confirmation: "123456")
   99.times do |n|
     name  = Faker::Name.name
     email = "example-#{n+1}@framgia.com"
@@ -28,16 +28,22 @@ def make_entries
   users = User.all(limit: 6)
   50.times do
     title = Faker::Lorem.sentence(1)
-    body = Faker::Lorem.sentence(5)
+    body = Faker::Lorem.sentence(30)
     users.each { |user| user.entries.create!(title: title, body: body) }
   end
 end
 
 def make_commnent_entry
     entries = Entry.all(limit: 10)
-    20.times do
+    user1 = User.find(1)
+    user2 = User.find(2)
+    5.times do
       content = Faker::Lorem.sentence(2)
-      entries.each { |entry| entry.comments.create!(content: content) }
+      entries.each { |entry| entry.comments.create!(content: content, user_id:user1.id) }
+    end
+    5.times do
+      content = Faker::Lorem.sentence(2)
+      entries.each { |entry| entry.comments.create!(content: content, user_id:user2.id) }
     end
 end
 
