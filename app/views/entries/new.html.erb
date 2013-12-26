@@ -13,8 +13,7 @@
 	    <%= f.text_area :body, placeholder: "Compose new entry..." %>
 	  </div>
 	  <div class="field">
-	  
-	    <%= f.label Time.now.inspect %>
+	    <%= Time.now.strftime("%Y-%m-%d %a %H:%M:%S") %>
 	  </div>
 	  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 	<% end %>
