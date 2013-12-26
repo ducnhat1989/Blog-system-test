@@ -1,7 +1,7 @@
 <li>
   <span class="content"><%= link_to wrap(entry.title), entry %></span>
   <span class="timestamp">
-    Posted <%= time_ago_in_words(entry.created_at) %> ago.
+    Posted <%= entry.created_at.strftime("%Y-%m-%d %a %H:%M:%S") + " - " + time_ago_in_words(entry.created_at).to_s %> ago.
   </span>
   <% if current_user?(entry.user) %>
     <%= link_to "delete", entry, method: :delete,

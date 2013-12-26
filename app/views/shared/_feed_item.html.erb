@@ -9,6 +9,6 @@
   </span>
 
   <span class="timestamp">
-    Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
+    Posted <%= feed_item.created_at.strftime("%Y-%m-%d %a %H:%M:%S") + " - " + time_ago_in_words(feed_item.created_at).to_s %> ago.
   </span>
 </li>

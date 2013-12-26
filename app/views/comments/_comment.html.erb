@@ -7,6 +7,6 @@
   </p>
   <p style="border-bottom:1px solid #cecece; padding-bottom:5px">
   	<%= wrap comment.content %>
-	<span style="font-size:10px; color:#bcbcbc"><%= time_ago_in_words(comment.created_at) %> ago</span>
+	<span style="font-size:10px; color:#bcbcbc"><%= comment.created_at.strftime("%Y-%m-%d %a %H:%M:%S") + " - " + time_ago_in_words(comment.created_at).to_s %> ago</span>
   </p>
 </aside>
