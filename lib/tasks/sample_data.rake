@@ -28,22 +28,17 @@ def make_entries
   users = User.all(limit: 6)
   50.times do
     title = Faker::Lorem.sentence(1)
-    body = Faker::Lorem.sentence(30)
+    body = Faker::Lorem.sentence(3)
     users.each { |user| user.entries.create!(title: title, body: body) }
   end
 end
 
 def make_commnent_entry
     entries = Entry.all(limit: 10)
-    user1 = User.find(1)
-    user2 = User.find(2)
-    5.times do
-      content = Faker::Lorem.sentence(2)
-      entries.each { |entry| entry.comments.create!(content: content, user_id:user1.id) }
-    end
-    5.times do
-      content = Faker::Lorem.sentence(2)
-      entries.each { |entry| entry.comments.create!(content: content, user_id:user2.id) }
+
+    40.times do
+      content = Faker::Lorem.sentence(1)
+      entries.each { |entry| entry.comments.create!(content: content, user_id: Random.rand(15) + 1) }
     end
 end
 

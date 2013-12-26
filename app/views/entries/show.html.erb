@@ -12,6 +12,7 @@
 	<div class="span12">
 	    <%= render @comments %>
 	</div>
+	<%= will_paginate @comments%>
 <% end %>
 <!--comment form-->
 <% if signed_in? %>

@@ -20,7 +20,7 @@ class EntriesController < ApplicationController
 		@entry = Entry.find(params[:id])
 		@user_post_entry = User.find(@entry.user_id)
 		#@user = current_user
-		@comments = @entry.comments
+		@comments = @entry.comments.paginate(page: params[:page])
 	end
 
 	def destroy
